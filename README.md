@@ -1,3 +1,7 @@
-# How to use Develop Config
+# WXT + Vue 3
 
-### [use template repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
+This template should help get you started developing with Vue 3 in WXT.
+
+## Recommended IDE Setup
+
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar).
