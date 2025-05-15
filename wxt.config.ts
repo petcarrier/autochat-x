@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
+  srcDir: 'src',
   modules: ['@wxt-dev/module-react'],
   manifest: {
     permissions: ['storage'],
@@ -10,7 +11,7 @@ export default defineConfig({
       default_path: 'sidebar.html'
     }
   },
-  vite: (configEnv) => ({
+  vite: () => ({
     plugins: [
       tailwindcss()
     ],

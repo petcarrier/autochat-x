@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import '@/assets/index.css';
 import App from './App';
-import '@/src/index.css';
 
 const container = document.getElementById('app');
 if (container) {
@@ -11,4 +11,4 @@ if (container) {
             <App />
         </React.StrictMode>
     );
-}
+} 

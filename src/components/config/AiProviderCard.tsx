@@ -1,4 +1,8 @@
 import React from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Switch } from "@/components/ui/switch";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface AiProviderCardProps {
     provider: string;
@@ -21,31 +25,36 @@ const AiProviderCard: React.FC<AiProviderCardProps> = ({
     onApiKeyUpdate,
 }) => {
     return (
-        <div className="border rounded-lg p-4 bg-white shadow-sm">
-            <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
-                <label className="relative inline-flex items-center cursor-pointer">
-                    <input
-                        type="checkbox"
+        <Card className="transition-all duration-200 hover:shadow-md">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-xl font-semibold tracking-tight">{title}</CardTitle>
+                <div className="flex items-center space-x-2">
+                    <Label htmlFor={`toggle-${provider}`} className="text-sm text-gray-600">
+                        {config.enabled ? 'Enabled' : 'Disabled'}
+                    </Label>
+                    <Switch
+                        id={`toggle-${provider}`}
                         checked={config.enabled}
-                        onChange={onToggle}
-                        className="sr-only peer"
+                        onCheckedChange={onToggle}
                     />
-                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
-                    </div>
-                </label>
-            </div>
-            <div>
-                <label className="block text-sm font-medium mb-1 text-gray-700">API Key</label>
-                <input
-                    type="password"
-                    value={config.apiKey}
-                    onChange={(e) => onApiKeyUpdate(e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
-                    placeholder={placeholder}
-                />
-            </div>
-        </div>
+                </div>
+            </CardHeader>
+            <CardContent>
+                <div className="space-y-2">
+                    <Label htmlFor={`api-key-${provider}`} className="text-sm font-medium">
+                        API Key
+                    </Label>
+                    <Input
+                        id={`api-key-${provider}`}
+                        type="password"
+                        value={config.apiKey}
+                        onChange={(e) => onApiKeyUpdate(e.target.value)}
+                        placeholder={placeholder}
+                        className="font-mono"
+                    />
+                </div>
+            </CardContent>
+        </Card>
     );
 };
 

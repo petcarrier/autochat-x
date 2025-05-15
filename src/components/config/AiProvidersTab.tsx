@@ -1,6 +1,6 @@
 import React from 'react';
 import AiProviderCard from './AiProviderCard';
-import { useConfig } from '@/src/stores/config';
+import { useConfig } from '@/stores/config';
 
 const AiProvidersTab: React.FC = () => {
     const { config, setApiKey, toggleProvider } = useConfig();
@@ -11,41 +11,42 @@ const AiProvidersTab: React.FC = () => {
 
     return (
         <div className="space-y-6">
-            <h2 className="text-xl font-bold mb-4 text-gray-800">AI Providers</h2>
+            <h2 className="text-2xl font-bold tracking-tight">AI Providers</h2>
+            <div className="grid gap-6">
+                <AiProviderCard
+                    provider="openai"
+                    config={config.openai}
+                    title="OpenAI"
+                    placeholder="sk-..."
+                    onToggle={() => toggleProvider('openai')}
+                    onApiKeyUpdate={(key) => handleUpdateApiKey('openai', key)}
+                />
 
-            <AiProviderCard
-                provider="openai"
-                config={config.openai}
-                title="OpenAI"
-                placeholder="sk-..."
-                onToggle={() => toggleProvider('openai')}
-                onApiKeyUpdate={(key) => handleUpdateApiKey('openai', key)}
-            />
+                <AiProviderCard
+                    provider="anthropic"
+                    config={config.anthropic}
+                    title="Anthropic"
+                    placeholder="sk-ant-..."
+                    onToggle={() => toggleProvider('anthropic')}
+                    onApiKeyUpdate={(key) => handleUpdateApiKey('anthropic', key)}
+                />
 
-            <AiProviderCard
-                provider="anthropic"
-                config={config.anthropic}
-                title="Anthropic"
-                placeholder="sk-ant-..."
-                onToggle={() => toggleProvider('anthropic')}
-                onApiKeyUpdate={(key) => handleUpdateApiKey('anthropic', key)}
-            />
+                <AiProviderCard
+                    provider="gemini"
+                    config={config.gemini}
+                    title="Google Gemini"
+                    onToggle={() => toggleProvider('gemini')}
+                    onApiKeyUpdate={(key) => handleUpdateApiKey('gemini', key)}
+                />
 
-            <AiProviderCard
-                provider="gemini"
-                config={config.gemini}
-                title="Google Gemini"
-                onToggle={() => toggleProvider('gemini')}
-                onApiKeyUpdate={(key) => handleUpdateApiKey('gemini', key)}
-            />
-
-            <AiProviderCard
-                provider="azure"
-                config={config.azure}
-                title="Azure OpenAI"
-                onToggle={() => toggleProvider('azure')}
-                onApiKeyUpdate={(key) => handleUpdateApiKey('azure', key)}
-            />
+                <AiProviderCard
+                    provider="azure"
+                    config={config.azure}
+                    title="Azure OpenAI"
+                    onToggle={() => toggleProvider('azure')}
+                    onApiKeyUpdate={(key) => handleUpdateApiKey('azure', key)}
+                />
+            </div>
         </div>
     );
 };
