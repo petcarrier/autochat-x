@@ -6,10 +6,8 @@ export default defineConfig({
   srcDir: 'src',
   modules: ['@wxt-dev/module-react'],
   manifest: {
-    permissions: ['storage'],
-    side_panel: {
-      default_path: 'sidebar.html'
-    }
+    permissions: ['storage', 'sidepanel'],
+    host_permissions: ['*://*.x.com/*', '*://*.twitter.com/*', '*://*.google.com/*'],
   },
   vite: () => ({
     plugins: [
